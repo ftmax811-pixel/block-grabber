@@ -25,7 +25,7 @@ public class BlockGrabberMod implements ModInitializer {
     @Override
     public void onInitialize() {
         UseBlockCallback.EVENT.register((player, world, hand, hit) -> {
-            if (hand != Hand.MAIN_HAND || world.isClient || !player.isSneaking()) return ActionResult.PASS;
+            if (hand != Hand.MAIN_HAND || world.isClient || !player.isSneaking()) return TypedActionResult.pass(player.getStackInHand(hand));
             ItemStack stack = player.getMainHandStack();
             if (!stack.isOf(Items.STICK)) return ActionResult.PASS;
 
@@ -50,7 +50,7 @@ public class BlockGrabberMod implements ModInitializer {
             var nbt = data.copyNbt();
             if (!nbt.contains(BLOCK_ID)) return ActionResult.PASS;
 
-            Identifier id = Identifier.tryParse(nbt.getString(BLOCK_ID).orElse(""));
+            Identifier id = Identifier.tryParse(nbt.getString(BLOCK_ID));
             if (id == null || !Registries.BLOCK.containsId(id)) return ActionResult.PASS;
 
             BlockState state = Registries.BLOCK.get(id).getDefaultState();
