@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "sigma_block_grabber",
+  "version": "1.0.0",
+  "name": "Sigma Block Grabber",
+  "description": "Tiny placed-block grab and throw prototype for Fabric 1.21.1.",
+  "authors": ["OpenAI"],
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.sigma.blockgrabber.BlockGrabberMod"]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.1",
+    "fabric-api": "*"
+  }
+}
