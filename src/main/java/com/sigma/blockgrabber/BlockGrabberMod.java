@@ -43,7 +43,7 @@ public class BlockGrabberMod implements ModInitializer {
         UseItemCallback.EVENT.register((player, world, hand) -> {
             if (hand != Hand.MAIN_HAND || world.isClient || !player.isSneaking()) return TypedActionResult.pass(player.getStackInHand(hand));
             ItemStack stack = player.getMainHandStack();
-            if (!stack.isOf(Items.STICK)) return ActionResult.PASS;
+            if (!stack.isOf(Items.STICK)) return TypedActionResult.pass(stack);
 
             var data = stack.get(DataComponentTypes.CUSTOM_DATA);
             if (data == null) return ActionResult.PASS;
