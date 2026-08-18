@@ -60,7 +60,7 @@ public class BlockGrabberMod implements ModInitializer {
             entity.setPosition(spawnPos.x, spawnPos.y, spawnPos.z);
             entity.setVelocity(player.getRotationVector().multiply(0.9));
             stack.remove(DataComponentTypes.CUSTOM_DATA);
-            return ActionResult.SUCCESS;
+            return TypedActionResult.success(stack);
         });
     }
 }
