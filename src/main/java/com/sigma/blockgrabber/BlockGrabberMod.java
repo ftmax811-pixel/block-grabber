@@ -48,7 +48,7 @@ public class BlockGrabberMod implements ModInitializer {
             var data = stack.get(DataComponentTypes.CUSTOM_DATA);
             if (data == null) return TypedActionResult.pass(stack);
             var nbt = data.copyNbt();
-            if (!nbt.contains(BLOCK_ID)) return ActionResult.PASS;
+            if (!nbt.contains(BLOCK_ID)) return TypedActionResult.pass(stack);
 
             Identifier id = Identifier.tryParse(nbt.getString(BLOCK_ID));
             if (id == null || !Registries.BLOCK.containsId(id)) return TypedActionResult.pass(player.getStackInHand(hand));
