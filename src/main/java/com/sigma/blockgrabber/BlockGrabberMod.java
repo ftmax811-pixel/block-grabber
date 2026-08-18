@@ -18,7 +18,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
+import net.minecraft.util.TypedActionResult;
 public class BlockGrabberMod implements ModInitializer {
     private static final String BLOCK_ID = "block_id";
 
@@ -51,7 +51,7 @@ public class BlockGrabberMod implements ModInitializer {
             if (!nbt.contains(BLOCK_ID)) return ActionResult.PASS;
 
             Identifier id = Identifier.tryParse(nbt.getString(BLOCK_ID));
-            if (id == null || !Registries.BLOCK.containsId(id)) return ActionResult.PASS;
+            if (id == null || !Registries.BLOCK.containsId(id)) return TypedActionResult.pass(player.getStackInHand(hand));
 
             BlockState state = Registries.BLOCK.get(id).getDefaultState();
             var spawnPos = player.getEyePos().add(player.getRotationVector().multiply(1.25));
